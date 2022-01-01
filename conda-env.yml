@@ -1,5 +1,6 @@
 name: market_analytics
 channels:
+  - plotly
   - conda-forge
   - defaults
 dependencies:
@@ -97,6 +98,7 @@ dependencies:
   - pickleshare=0.7.5
   - pillow=8.4.0
   - pip=21.2.4
+  - plotly=4.14.3
   - prometheus_client=0.12.0
   - prompt-toolkit=3.0.24
   - ptyprocess=0.7.0
@@ -113,6 +115,7 @@ dependencies:
   - pyzmq=22.3.0
   - readline=8.1
   - requests=2.26.0
+  - retrying=1.3.3
   - send2trash=1.8.0
   - setuptools=58.0.4
   - six=1.16.0
@@ -135,4 +138,5 @@ dependencies:
   - zipp=3.6.0
   - zlib=1.2.11
   - zstd=1.5.1
-prefix: /Users/dineshpinto/miniconda3/envs/market_analytics
+  - pip:
+    - pycoingecko==2.2.0

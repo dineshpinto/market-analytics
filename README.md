@@ -1,4 +1,6 @@
-# Bitcoin Market Analysis
+# Market Analysis
+
+## Bitcoin Market Analysis
 
 Understanding market cycles using basic mathematics is a fun exercise. Here we use simple geometric progressions on the length of Bitcoin bull and bear 
 cycles to estimate the length of future cycles. This simple model is able to accurately predict a 26 month bull cycle peaking in April 2021, followed 
@@ -9,3 +11,10 @@ However, if this is not the case, then possibly a large event has led to hyperbi
 Given the nature of the geometric progression however, this will not last forever, and the bull cycle length will also tend to 0 with time.
 
 The full analysis is in the Jupyter Notebook [here](https://github.com/dineshpinto/market_analysis/blob/main/BitcoinGeometricProgression.ipynb)
+
+## Project Valuation
+TBD.
+
+### Export conda environment
+```conda env export --no-builds | grep -v "^prefix: " > conda-env.yml```
+
