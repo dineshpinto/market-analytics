@@ -1,5 +1,7 @@
 # Market Analysis
 
+A set of Jupyter Notebooks analyzing the crypto markets. Generally useful for identifying trends in data, and finding undervalued projects based on derived metrics.
+
 ## Bitcoin Market Analysis
 
 Understanding market cycles using basic mathematics is a fun exercise. Here we use simple geometric progressions on the length of Bitcoin bull and bear 
@@ -21,3 +23,5 @@ The full analysis is in the Jupyter Notebook [here](https://github.com/dineshpin
 ### Export conda environment
 ```conda env export --no-builds | grep -v "^prefix: " > conda-env.yml```
 
+## Disclaimer
+This project is only for educational purposes, always do your own research before making any investment decisions.
