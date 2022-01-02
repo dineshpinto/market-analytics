@@ -20,6 +20,18 @@ Finding undervalued projects based on metrics such as fully diluted valuation, c
 The full analysis is in the Jupyter Notebook [here](https://github.com/dineshpinto/market_analysis/blob/main/notebooks/ProjectValuation.ipynb)
 
 
+## Installation
+1. Create the conda environment from file
+   + ```conda env create --file conda-env.yml```
+2. Activate environment 
+   + ```conda activate market_analytics```
+3. Add environment to Jupyter kernel 
+    + ```python -m ipykernel install --name=market_analytics```
+4. Install jupyter lab extensions for plotly 
+   + ```jupyter labextension install jupyterlab-plotly```
+5. Explore the various Jupyterlab Notebooks under `notebooks/`
+
+
 ### Export conda environment
 ```conda env export --no-builds | grep -v "^prefix: " > conda-env.yml```
 
