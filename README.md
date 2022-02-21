@@ -1,5 +1,7 @@
 # Market Analysis
 
+A set of Jupyter Notebooks analyzing the crypto markets. Generally useful for identifying trends in data, and finding undervalued projects based on derived metrics.
+
 ## Bitcoin Market Analysis
 
 Understanding market cycles using basic mathematics is a fun exercise. Here we use simple geometric progressions on the length of Bitcoin bull and bear 
@@ -18,6 +20,20 @@ Finding undervalued projects based on metrics such as fully diluted valuation, c
 The full analysis is in the Jupyter Notebook [here](https://github.com/dineshpinto/market_analysis/blob/main/notebooks/ProjectValuation.ipynb)
 
 
+## Installation
+1. Create the conda environment from file
+   + ```conda env create --file conda-env.yml```
+2. Activate environment 
+   + ```conda activate market_analytics```
+3. Add environment to Jupyter kernel 
+    + ```python -m ipykernel install --name=market_analytics```
+4. Install jupyter lab extensions for plotly 
+   + ```jupyter labextension install jupyterlab-plotly```
+5. Explore the various Jupyterlab Notebooks under `notebooks/`
+
+
 ### Export conda environment
 ```conda env export --no-builds | grep -v "^prefix: " > conda-env.yml```
 
+## Disclaimer
+This project is only for educational purposes, always do your own research before making any investment decisions.
