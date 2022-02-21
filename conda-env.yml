@@ -18,10 +18,11 @@ dependencies:
   - brotli-bin=1.0.9
   - brotlipy=0.7.0
   - bzip2=1.0.8
-  - ca-certificates=2021.10.26
-  - certifi=2021.5.30
+  - ca-certificates=2021.10.8
+  - certifi=2021.10.8
   - cffi=1.15.0
   - charset-normalizer=2.0.9
+  - colorama=0.4.4
   - cryptography=36.0.1
   - cycler=0.11.0
   - debugpy=1.5.1
@@ -125,6 +126,7 @@ dependencies:
   - testpath=0.5.0
   - tk=8.6.11
   - tornado=6.1
+  - tqdm=4.62.3
   - traitlets=5.1.1
   - tzdata=2021e
   - urllib3=1.26.7
@@ -139,4 +141,6 @@ dependencies:
   - zlib=1.2.11
   - zstd=1.5.1
   - pip:
+    - ciso8601==2.2.0
+    - ftx==1.2.0
     - pycoingecko==2.2.0
