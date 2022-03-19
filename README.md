@@ -33,7 +33,9 @@ The full analysis is in the Jupyter Notebook [here](https://github.com/dineshpin
 
 
 ### Export conda environment
-```conda env export --no-builds | grep -v "^prefix: " > conda-env.yml```
+```shell
+conda env export --no-builds | grep -v "^prefix: " > conda-env.yml
+```
 
 ## Disclaimer
 This project is only for educational purposes, always do your own research before making any investment decisions.
