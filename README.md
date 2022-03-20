@@ -1,9 +1,11 @@
-# Market Analysis
+# Market Analytics
 
-A set of Jupyter Notebooks analyzing the crypto markets. Generally useful for identifying trends in data, and finding undervalued projects based on derived metrics.
+Mathematical analysis of orderbook data, bitcoin market cycles and crypto project valuations.
 
 ## Orderbook Delta
-Counter trade the volume delta (bid - ask) on the BTC-PERP pair. Based on the principle of mean reversion, long/short entries are determined by a large standard deviation in the volume delta at orderbook depth 0. 
+The idea behind this is the concept of _mean reversion_. We look for large deviations in the volume delta of BTC-PERP on FTX at 0 depth.  These deviations could be caused by over-enthusiastic and over-leveraged market participants.
+
+We counter-trade those deviations, and enter short/long positions based on triggers given by a large delta (> 2 SDs) from a (10-20) period rolling bollinger band.
 
 The full analysis is in the Jupyter Notebook [here](notebooks/OrderbookDeltaAnalyzer.ipynb)
 
@@ -34,8 +36,8 @@ The full analysis is in the Jupyter Notebook [here](notebooks/ProjectValuation.i
 
 
 ## Installation
-1. Create the conda environment from file
-```
+1. Create the conda environment from file (for Mac M1)
+```shell
 conda env create --file conda-env.yml
 ```
 3. Activate environment 
@@ -51,6 +53,9 @@ python -m ipykernel install --name=market_analytics
 jupyter labextension install jupyterlab-plotly
 ```
 6. Explore the various Jupyterlab Notebooks under `notebooks/`
+```shell
+jupyter lab
+```
 
 
 ### Export conda environment
