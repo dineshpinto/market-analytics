@@ -1,4 +1,4 @@
-# Market Analysis
+# Market Analytics
 
 Mathematical analysis of orderbook data, bitcoin market cycles and crypto project valuations.
 
