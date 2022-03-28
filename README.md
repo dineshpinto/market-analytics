@@ -3,6 +3,8 @@
 Mathematical analysis of orderbook data, bitcoin market cycles and crypto project valuations.
 
 ## Orderbook Delta
+A trading bot for this strategy is written in Rust [here](https://github.com/dineshpinto/orderbook-delta-bot).
+
 The idea behind this is the concept of _mean reversion_. We look for large deviations in the volume delta of BTC-PERP on FTX at 0 depth.  These deviations could be caused by over-enthusiastic and over-leveraged market participants.
 
 We counter-trade those deviations, and enter short/long positions based on triggers given by a large delta (> 2 SDs) from a (10-20) period rolling bollinger band.
