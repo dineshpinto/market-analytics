@@ -13,6 +13,10 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 
 ![orderbook_delta_analyzer.png](images/orderbook_delta_analyzer.png)
 
+### Limitations
+1. The data is almost certainly overfit.
+2. Needs to tested on significantly more data to draw meaningful conclusions.
+
 
 ## Bitcoin Market Analysis
 
@@ -64,4 +68,4 @@ conda env export --no-builds | grep -v "^prefix: " > conda-env.yml
 ```
 
 ## Disclaimer
-This project is only for educational purposes, always do your own research before making any investment decisions.
+This project is ONLY for educational purposes. There is NO guarantee of the accuracy of the output data. Do not make any trading or investment decisions based on these results. Always do your own research.
