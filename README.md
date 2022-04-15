@@ -19,10 +19,10 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 1. The data is almost certainly overfit.
 2. Needs to tested on significantly more data to draw meaningful conclusions.
 
-## Open interest and funding rates (FOM)
-We use a metric derived from the open interest, normalized by the market cap and the funding rate. The metric might indicates whether futures market participants hold a strong bias. The direction of the bias is indicated by the funding rate. The variation of the FOM with different projects is shown in this image below.
+## Open interest and funding rates
+We use a metric derived from the product of the open interest and funding rate, normalized by the market cap. We name this metric FOM (**F**unding rate, **O**pen Interest and **M**arket cap). The FOM metric indicates whether futures market participants hold a strong bias. The direction of the bias is indicated by the funding rate. The variation of the FOM with different projects is shown in this image below.
 
-The top 5 pecentile are shown in the table below.
+The top 5 pecentile of projects with the hightest FOM are shown in the table below.
 
 | Token | FOM   | Direction | 
 |-------|-------|-----------|
