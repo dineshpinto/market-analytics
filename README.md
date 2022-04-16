@@ -22,14 +22,14 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 ## Open interest and funding rates
 We use a metric derived from the product of the open interest and funding rate, normalized by the market cap. We name this metric FOM (**F**unding rate, **O**pen Interest and **M**arket cap). The FOM metric indicates whether futures market participants hold a strong bias. The direction of the bias is indicated by the funding rate. The variation of the FOM with different projects is shown in this image below.
 
-The top 5 pecentile of projects with the hightest FOM are shown in the table below.
+The top 5 percentile of projects with the highest FOM (on 2022-04-16) are shown in the table below.
 
 | Token | FOM   | Direction | 
 |-------|-------|-----------|
-| LOOKS | 17.6μ | Short     | 
-| GMT   | 3.66μ | Short     | 
-| RAY   | 1.25μ | Short     |
-| WAVES | 1.20μ | Short     |
+| LOOKS | 19.2μ | Short     | 
+| KNC   | 2.56μ | Short     | 
+| WAVES | 1.47μ | Short     |
+| RAY   | 1.11μ | Short     |
 
 
 The full analysis is in [notebooks/FuturesOpenInterestAnalyzer.ipynb](notebooks/FuturesOpenInterestAnalyzer.ipynb)
