@@ -36,7 +36,7 @@ The top 5 percentile of projects with the highest FOM (on 2022-04-16) are shown 
 | WAVES | 1.47μ | Short     |
 | RAY   | 1.11μ | Short     |
 
-## Limitations:
+### Limitations:
 1. While this does give the prevailing sentiment among the futures market participants,
 it does not provide any information about timeframes or price levels. 
 2. Building on point 1, the main limitation is the lack of historical data. Tracking the buildup of shorts/longs over time is important,
