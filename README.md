@@ -16,11 +16,16 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 ![orderbook_delta_analyzer.png](images/orderbook_delta_analyzer.png)
 
 ### Limitations
-1. The data is almost certainly overfit.
+1. The data is almost certainly overfit, there's even a TODO to test for it ;).
 2. Needs to tested on significantly more data to draw meaningful conclusions.
 
 ## Open interest and funding rates
-We use a metric derived from the product of the open interest and funding rate, normalized by the market cap. We name this metric FOM (**F**unding rate, **O**pen Interest and **M**arket cap). The FOM metric indicates whether futures market participants hold a strong bias. The direction of the bias is indicated by the funding rate. The variation of the FOM with different projects is shown in this image below.
+We use a metric derived from the product of the open interest and funding rate, normalized by the market cap. 
+The metrics name is FOM, derived from **F**unding rate, **O**pen Interest and **M**arket cap. 
+The FOM metric indicates whether futures market participants hold a strong bias, generally for smaller cap projects 
+trading on popular derivatives exchanges. 
+The direction of the bias is indicated by the funding rate. The variation of the FOM with different projects is shown 
+in this image below.
 
 The top 5 percentile of projects with the highest FOM (on 2022-04-16) are shown in the table below.
 
@@ -31,6 +36,13 @@ The top 5 percentile of projects with the highest FOM (on 2022-04-16) are shown 
 | WAVES | 1.47μ | Short     |
 | RAY   | 1.11μ | Short     |
 
+## Limitations:
+1. While this does give the prevailing sentiment among the futures market participants,
+it does not provide any information about timeframes or price levels. 
+2. Building on point 1, the main limitation is the lack of historical data. Tracking the buildup of shorts/longs over time is important,
+both from the perspective of fitting it to some model and the price levels at which they enter.
+3. In very certain cases, the market participants may simply be hedging their positions due to some upcoming event, 
+perhaps this could be filtered out by a simple social media volume tracker...
 
 The full analysis is in [notebooks/FuturesOpenInterestAnalyzer.ipynb](notebooks/FuturesOpenInterestAnalyzer.ipynb)
 
@@ -86,4 +98,4 @@ conda env export --no-builds | grep -v "^prefix: " > conda-env.yml
 ```
 
 ## Disclaimer
-This project is only for educational purposes. There is not guarantee of the accuracy of the output data. Do not make any trading or investment decisions based on these results. Always do your own research.
+This project is only for educational purposes. There is no guarantee of the accuracy of the output data. Do not make any trading or investment decisions based on these results. Always do your own research.
