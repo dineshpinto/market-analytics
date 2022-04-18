@@ -36,6 +36,10 @@ The top 5 percentile of projects with the highest FOM (on 2022-04-16) are shown 
 | WAVES | 1.47μ | Short     |
 | RAY   | 1.11μ | Short     |
 
+The full analysis is in [notebooks/FuturesOpenInterestAnalyzer.ipynb](notebooks/FuturesOpenInterestAnalyzer.ipynb)
+
+![fom_metric.png](images/fom_metric.png)
+
 ### Limitations:
 1. While this does give the prevailing sentiment among the futures market participants,
 it does not provide any information about timeframes or price levels. 
@@ -43,10 +47,6 @@ it does not provide any information about timeframes or price levels.
 both from the perspective of fitting it to some model and the price levels at which they enter.
 3. In very certain cases, the market participants may simply be hedging their positions due to some upcoming event, 
 perhaps this could be filtered out by a simple social media volume tracker...
-
-The full analysis is in [notebooks/FuturesOpenInterestAnalyzer.ipynb](notebooks/FuturesOpenInterestAnalyzer.ipynb)
-
-![fom_metric.png](images/fom_metric.png)
 
 
 ## Bitcoin Market Analysis
