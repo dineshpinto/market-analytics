@@ -27,7 +27,7 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 3. Perform spectral analysis for market timing
 
 ## Open interest and funding rates
-We use a metric derived from the product of the open interest and funding rate, normalized by the market cap. 
+We use a metric derived from the product of the open interest, future dilution and funding rate, normalized by the market cap. 
 The metrics name is FOM, derived from **F**unding rate, **O**pen Interest and **M**arket cap. 
 The FOM metric indicates whether futures market participants hold a strong bias, generally for smaller cap projects 
 trading on popular derivatives exchanges. 
