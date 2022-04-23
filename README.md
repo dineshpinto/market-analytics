@@ -5,9 +5,11 @@ Mathematical analysis of orderbook data, bitcoin market cycles and crypto projec
 ## Orderbook Delta
 A trading bot for this strategy is written in Rust [here](https://github.com/dineshpinto/orderbook-delta-bot).
 
-The idea behind this is the concept of _mean reversion_. We look for large deviations in the volume delta of BTC-PERP on FTX at 0 depth.  These deviations could be caused by over-enthusiastic and over-leveraged market participants.
+The idea behind this is the concept of _mean reversion_. We look for large deviations in the volume delta of BTC-PERP 
+on FTX at depth=1.  These deviations could be caused by over-enthusiastic and over-leveraged market participants.
 
-We counter-trade those deviations, and enter short/long positions based on triggers given by a large delta (> 2 SDs) from a (10-20) period rolling bollinger band.
+We counter-trade those deviations, and enter short/long positions based on triggers given by a large delta (> 2 SDs) 
+from a (10-20) period rolling bollinger band.
 
 The full analysis is in [notebooks/OrderbookDeltaAnalyzer.ipynb](notebooks/OrderbookDeltaAnalyzer.ipynb)
 
@@ -16,8 +18,13 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 ![orderbook_delta_analyzer.png](images/orderbook_delta_analyzer.png)
 
 ### Limitations
-1. The data is almost certainly overfit, there's even a TODO to test for it ;).
-2. Needs to tested on significantly more data to draw meaningful conclusions.
+1. The data is almost certainly over-fit, there's even a TODO to test for it ;)
+2. Needs to tested on significantly more data
+
+### TODO
+1. Extract probabilities to use as inputs for Kelly criterion
+2. Use multiple statical models to predict market moves (in progress)
+3. Perform spectral analysis for market timing
 
 ## Open interest and funding rates
 We use a metric derived from the product of the open interest and funding rate, normalized by the market cap. 
