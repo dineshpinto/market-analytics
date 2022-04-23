@@ -34,14 +34,17 @@ trading on popular derivatives exchanges.
 The direction of the bias is indicated by the funding rate. The variation of the FOM with different projects is shown 
 in this image below.
 
-The top 5 percentile of projects with the highest FOM (on 2022-04-16) are shown in the table below.
+The top 5 percentile of projects with the highest FOM (on 2022-04-23) are shown in the table below.
+The higher the FOM, the larger the relative position futures participants have taken.
 
-| Token | FOM   | Direction | 
-|-------|-------|-----------|
-| LOOKS | 19.2μ | Short     | 
-| KNC   | 2.56μ | Short     | 
-| WAVES | 1.47μ | Short     |
-| RAY   | 1.11μ | Short     |
+| Token | FOM  | Direction | 
+|-------|------|-----------|
+| LOOKS | 7.6μ | Short     | 
+| GMT   | 2.1μ | Short     | 
+| CRV   | 1.9μ | Short     |
+| SRM   | 0.9μ | Short     |
+| RAY   | 0.7μ | Short     |
+| BIT   | 0.6μ | Short     |
 
 The full analysis is in [notebooks/FuturesOpenInterestAnalyzer.ipynb](notebooks/FuturesOpenInterestAnalyzer.ipynb)
 
