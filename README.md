@@ -26,6 +26,9 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 2. Use multiple statical models to predict market moves (in progress)
 3. Perform spectral analysis for market timing
 
+## Crypto and its correlation to interest rates
+![crypto_interest_rate_comparison.png](images/crypto_interest_rate_comparison.png)
+
 ## Open interest and funding rates
 We use a metric derived from the product of the open interest, future dilution and funding rate, normalized by the market cap. 
 The metrics name is FOM, derived from **F**unding rate, **O**pen Interest and **M**arket cap. 
