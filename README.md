@@ -29,6 +29,9 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 ## Crypto and its correlation to interest rates
 ![crypto_interest_rate_comparison.png](images/crypto_interest_rate_comparison.png)
 
+![crypto_interest_rate_correlation.png](images/crypto_interest_rate_correlation.png)
+
+
 ## Open interest and funding rates
 We use a metric derived from the product of the open interest, future dilution and funding rate, normalized by the market cap. 
 The metrics name is FOM, derived from **F**unding rate, **O**pen Interest and **M**arket cap. 
