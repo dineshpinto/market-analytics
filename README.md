@@ -26,10 +26,12 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 2. Use multiple statical models to predict market moves (in progress)
 3. Perform spectral analysis for market timing
 
-## Crypto and its correlation to interest rates
+## Crypto and its correlation to US Fed actions
 ![crypto_interest_rate_comparison.png](images/crypto_interest_rate_comparison.png)
 
 ![crypto_interest_rate_correlation.png](images/crypto_interest_rate_correlation.png)
+
+![crypto_asset_holdings_repo_comparison.png](images/crypto_asset_holdings_repo_comparison.png)
 
 
 ## Open interest and funding rates
