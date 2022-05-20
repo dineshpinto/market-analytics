@@ -6,7 +6,7 @@ Mathematical analysis of orderbook data, bitcoin market cycles and crypto projec
 A trading bot for this strategy is written in Rust [here](https://github.com/dineshpinto/orderbook-delta-bot).
 
 The idea behind this is the concept of _mean reversion_. We look for large deviations in the volume delta of BTC-PERP 
-on FTX at depth=1.  These deviations could be caused by over-enthusiastic and over-leveraged market participants.
+on FTX at depth=1.  These deviations could be caused by over-enthusiastic and over-leveraged market participants (speculation, are reasons important?).
 
 We counter-trade those deviations, and enter short/long positions based on triggers given by a large delta (> 2 SDs) 
 from a (10-20) period rolling bollinger band.
@@ -66,10 +66,13 @@ both from the perspective of fitting it to some model and the price levels at wh
 3. In very certain cases, the market participants may simply be hedging their positions due to some upcoming event, 
 perhaps this could be filtered out by a simple social media volume tracker...
 
+## Hawkes Processes
+
+## CFMMs
 
 ## Bitcoin Market Analysis
 
-Understanding market cycles using basic mathematics is a fun exercise. Here we use simple geometric progressions on the length of Bitcoin bull and bear 
+Understanding market cycles using basic mathematics is a fun (and probably incorrect!) exercise. Here we use simple geometric progressions on the length of Bitcoin bull and bear 
 cycles to estimate the length of future cycles. This simple model is able to accurately predict a 26 month bull cycle peaking in April 2021, followed 
 by a 3 month bear cycle. It further predicts 10 month bull cycle ending in **July 2022**, after which the model starts predicting a bear cycle length tending to 0.
 
