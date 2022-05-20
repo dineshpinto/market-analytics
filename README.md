@@ -18,13 +18,17 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 ![orderbook_delta_analyzer.png](images/orderbook_delta_analyzer.png)
 
 ### Limitations
-1. The data is almost certainly over-fit, there's even a TODO to test for it ;)
-2. Needs to tested on significantly more data
++ The data is almost certainly over-fit, there's even a TODO to test for it
++ Needs to tested on significantly more data
 
 ### TODO
-1. Extract probabilities to use as inputs for Kelly criterion
-2. Use multiple statical models to predict market moves (in progress)
-3. Perform spectral analysis for market timing
++ Extract probabilities to use as inputs for Kelly criterion
++ Use multiple statical models to predict market moves (in progress, needs to be formalized)
+  - [x] ARIMA
+  - [x] Observed Components
+  - [x] ML time series analysis
++ Perform spectral analysis for market timing
+
 
 ## Crypto and its correlation to US Fed actions
 ![crypto_interest_rate_comparison.png](images/crypto_interest_rate_comparison.png)
