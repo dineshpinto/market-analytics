@@ -71,8 +71,10 @@ both from the perspective of fitting it to some model and the price levels at wh
 perhaps this could be filtered out by a simple social media volume tracker...
 
 ## Hawkes Processes
+The full analysis is in [notebooks/HawkesProcesses.ipynb](notebooks/HawkesProcesses.ipynb)
 
 ## CFMMs
+The full analysis is in [notebooks/CFMM.ipynb](notebooks/CFMM.ipynb)
 
 ## Bitcoin Market Analysis
 
