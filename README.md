@@ -18,7 +18,12 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 ![orderbook_delta_analyzer.png](images/orderbook_delta_analyzer.png)
 
 ### Limitations
-+ The data is almost certainly over-fit, there's even a TODO to test for it
++ This model is not based on a detailed analysis of market microstructure and order-book dynamics, it is simply an obervation based on very limited experimentation
++ To understand market microstucture and order-book dynamics, an ab-intio theoretical analysis is required. Quant arXiv has some nice papers on this:
+  + [Trade arrival dynamics and quote imbalance in a limit order book](https://arxiv.org/pdf/1312.0514.pdf)
+  + [Continuous-time Modeling of Bid-Ask Spread and Price Dynamics in Limit Order Books](https://arxiv.org/pdf/1310.1103.pdf)
+  + [How markets slowly digest changes in supply and demand](https://arxiv.org/pdf/0809.0822.pdf)
++ The data is certainly over-fit
 + Needs to tested on significantly more data
 
 ### TODO
