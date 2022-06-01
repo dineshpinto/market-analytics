@@ -18,7 +18,12 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 ![orderbook_delta_analyzer.png](images/orderbook_delta_analyzer.png)
 
 ### Limitations
-+ The data is almost certainly over-fit, there's even a TODO to test for it
++ This model is not based on a detailed analysis of market microstructure and order-book dynamics, it is simply an obervation based on very limited experimentation
++ To understand market microstucture and order-book dynamics, an ab-intio theoretical analysis is required. Quant arXiv has some nice papers on this:
+  + [Trade arrival dynamics and quote imbalance in a limit order book](https://arxiv.org/pdf/1312.0514.pdf)
+  + [Continuous-time Modeling of Bid-Ask Spread and Price Dynamics in Limit Order Books](https://arxiv.org/pdf/1310.1103.pdf)
+  + [How markets slowly digest changes in supply and demand](https://arxiv.org/pdf/0809.0822.pdf)
++ The data is certainly over-fit
 + Needs to tested on significantly more data
 
 ### TODO
@@ -125,4 +130,8 @@ conda env export --no-builds | grep -v "^prefix: " > conda-env.yml
 ```
 
 ## Disclaimer
-This project is only for educational purposes. There is no guarantee of the accuracy of the output data. Do not make any trading or investment decisions based on these results. Always do your own research.
+This project is for educational purposes only. You should not construe any such information or other material as legal, tax, investment, financial, or other advice. Nothing contained here constitutes a solicitation, recommendation, endorsement, or offer by me or any third party service provider to buy or sell any securities or other financial instruments in this or in any other jurisdiction in which such solicitation or offer would be unlawful under the securities laws of such jurisdiction.
+
+If you plan to use real money, use at your own risk.
+
+Under no circumstances will I be held responsible or liable in any way for any claims, damages, losses, expenses, costs, or liabilities whatsoever, including, without limitation, any direct or indirect damages for loss of profits.
