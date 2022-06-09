@@ -17,6 +17,21 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 
 ![orderbook_delta_analyzer.png](images/orderbook_delta_analyzer.png)
 
+
+## Live orderbook visualizer
+Built with Dash and Plotly, you can also visualize the orderbook delta live:
+
+[orderbook_delta_visualizer](https://user-images.githubusercontent.com/15251343/172922403-625a01f5-3dd5-45b6-851d-915c21f5d502.mov)
+
+
+To run the visualizer:
+```shell
+python src/orderbook_delta_visualizer.py
+```
+
+- To adjust the parameters (market/bollinger band length etc.), you can modfiy `orderbook_delta_visualizer.py`. 
+- No need to restart the visualizer, it will update automatically.
+
 ### Limitations
 + This model is not based on a detailed analysis of market microstructure and order-book dynamics, it is simply an obervation based on very limited experimentation
 + To understand market microstucture and order-book dynamics, an ab-intio theoretical analysis is required. Quant arXiv has some nice papers on this:
