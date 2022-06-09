@@ -29,8 +29,8 @@ To run the visualizer:
 python src/orderbook_delta_visualizer.py
 ```
 
-- To adjust the paramters (market/bollinger band length etc.), you can modfiy `orderbook_delta_visualizer.py`. 
-- No need to restart the server, it will update automatically.
+- To adjust the parameters (market/bollinger band length etc.), you can modfiy `orderbook_delta_visualizer.py`. 
+- No need to restart the visualizer, it will update automatically.
 
 ### Limitations
 + This model is not based on a detailed analysis of market microstructure and order-book dynamics, it is simply an obervation based on very limited experimentation
