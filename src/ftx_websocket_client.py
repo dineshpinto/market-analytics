@@ -5,6 +5,7 @@ import zlib
 from collections import defaultdict, deque
 from itertools import zip_longest
 from typing import DefaultDict, Deque, List, Dict, Tuple, Optional
+
 from gevent.event import Event
 
 from ftx_websocket_manager import WebsocketManager
