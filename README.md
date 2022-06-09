@@ -21,8 +21,7 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 ## Live orderbook visualizer
 Built with Dash and Plotly, you can also visualize the orderbook delta live:
 
-[orderbook_delta_visualizer](https://user-images.githubusercontent.com/15251343/172922403-625a01f5-3dd5-45b6-851d-915c21f5d502.mov)
-
+[orderbook_delta_visualizer](https://user-images.githubusercontent.com/15251343/172933714-0164b968-4ef4-43ab-b89c-f4219c18888c.mov)
 
 To run the visualizer:
 ```shell
