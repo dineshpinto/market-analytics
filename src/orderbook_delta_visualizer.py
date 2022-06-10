@@ -3,7 +3,6 @@ from collections import deque
 from typing import Tuple
 
 import dash
-import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import plotly.io as pio
@@ -26,21 +25,28 @@ def get_bid_ask_and_delta(market: str) -> Tuple[float, float, float, float, floa
 
 
 def update_deque_lists():
-    timestamps.append(datetime.datetime.now())
+    """ Query websocket and update deque lists """
+    try:
+        spot_bid_price, spot_ask_price, spot_bid_volume, spot_ask_volume, spot_delta = get_bid_ask_and_delta(SPOT_MARKET)
+        perp_bid_price, perp_ask_price, perp_bid_volume, perp_ask_volume, perp_delta = get_bid_ask_and_delta(PERP_FUTURE)
+    except IndexError:
+        # Catch errors from websocket and handle them by skipping over the point
+        pass
+    else:
+        # If no error, append data into deque lists
+        timestamps.append(datetime.datetime.now())
 
-    spot_bid_price, spot_ask_price, spot_bid_volume, spot_ask_volume, spot_delta = get_bid_ask_and_delta(SPOT_MARKET)
-    spot_bids.append(spot_bid_price)
-    spot_asks.append(spot_ask_price)
-    spot_ask_volumes.append(spot_ask_volume)
-    spot_bid_volumes.append(spot_bid_volume)
-    spot_deltas.append(spot_delta)
+        spot_bids.append(spot_bid_price)
+        spot_asks.append(spot_ask_price)
+        spot_ask_volumes.append(spot_ask_volume)
+        spot_bid_volumes.append(spot_bid_volume)
+        spot_deltas.append(spot_delta)
 
-    perp_bid_price, perp_ask_price, perp_bid_volume, perp_ask_volume, perp_delta = get_bid_ask_and_delta(PERP_FUTURE)
-    perp_bids.append(perp_bid_price)
-    perp_asks.append(perp_ask_price)
-    perp_ask_volumes.append(perp_ask_volume)
-    perp_bid_volumes.append(perp_bid_volume)
-    perp_deltas.append(perp_delta)
+        perp_bids.append(perp_bid_price)
+        perp_asks.append(perp_ask_price)
+        perp_ask_volumes.append(perp_ask_volume)
+        perp_bid_volumes.append(perp_bid_volume)
+        perp_deltas.append(perp_delta)
 
 
 app = dash.Dash(__name__)
@@ -59,11 +65,14 @@ app.layout = html.Div(
 )
 def update_graph_scatter(_):
     update_deque_lists()
+    position.append(STRATEGY.strategy(perp_deltas=list(perp_deltas), spot_deltas=list(spot_deltas)))
 
     fig = make_subplots(rows=5, cols=1, shared_xaxes=True,
                         subplot_titles=(
                             f"{SPOT_MARKET} price", f"{SPOT_MARKET} volume", f"{PERP_FUTURE} price",
                             f"{PERP_FUTURE} volume", f" Delta volume (+ {STRATEGY})"))
+
+    fig = STRATEGY.plot_strategy(timestamps=list(timestamps), fig=fig)
 
     # Spot bids and asks
     fig.add_trace(
@@ -161,35 +170,22 @@ def update_graph_scatter(_):
         col=1
     )
 
-    sp_deltas = pd.Series(list(perp_deltas)) * pd.Series(list(spot_deltas))
-    position.append(STRATEGY.strategy(deltas=sp_deltas))
-    fig = STRATEGY.plot_strategy(timestamps=list(timestamps), fig=fig)
-
-    fig.add_trace(
-        go.Scatter(
-            x=list(timestamps),
-            y=sp_deltas,
-            name='Spot * Perp Delta',
-            mode='lines+markers',
-            marker=dict(symbol="circle")
-        ),
-        row=5,
-        col=1
-    )
-
+    __current_pos = None
     for idx, pos in enumerate(position):
-        if pos == Position.LONG:
-            fig.add_vline(timestamps[idx + 1], line_color=px.colors.qualitative.Plotly[2], line_dash="dot", row="all",
-                          col=1)
-        elif pos == Position.SHORT:
-            fig.add_vline(timestamps[idx + 1], line_color=px.colors.qualitative.Plotly[6], line_dash="dot", row="all",
-                          col=1)
+        if pos == Position.LONG and __current_pos != Position.LONG:
+            __current_pos = Position.LONG
+            fig.add_vline(timestamps[idx + 1], line_color=px.colors.qualitative.Plotly[2],
+                          line_dash="dot", row="all", col=1)
+        elif pos == Position.SHORT and __current_pos != Position.SHORT:
+            __current_pos = Position.SHORT
+            fig.add_vline(timestamps[idx + 1], line_color=px.colors.qualitative.Plotly[6],
+                          line_dash="dot", row="all", col=1)
 
     fig['layout'].update(
         title_text=f"{SPOT_MARKET} and {PERP_FUTURE} bid-ask orderbook at depth=1",
         xaxis=dict(range=[min(timestamps), max(timestamps)]),
-        width=1400,
-        height=900,
+        width=WINDOW_SIZE[0],
+        height=WINDOW_SIZE[1],
     )
 
     return fig
@@ -197,29 +193,33 @@ def update_graph_scatter(_):
 
 if __name__ == '__main__':
     # Set up parameters
-    MAX_LENGTH = 300
-    pio.templates.default = "plotly_dark"
+    # Market params
     SPOT_MARKET = "BTC/USD"
     PERP_FUTURE = "BTC-PERP"
-    BBAND_LENGTH = 20
-    BBAND_STD = 3
-    STRATEGY = BollingerBandStrategy(bband_length=BBAND_LENGTH, bband_std=BBAND_STD)
 
+    # Strategy params
+    STRATEGY = BollingerBandStrategy(bband_length=20, bband_std=3)
+
+    # Plotting params
+    MAX_VISIBLE_LENGTH = 1000
+    pio.templates.default = "plotly_dark"
+    WINDOW_SIZE = (1400, 850)
+
+    # Initialize FTX websocket and deque lists
     ftx = FtxWebsocketClient()
 
-    # Initialize deque lists
-    timestamps = deque(maxlen=MAX_LENGTH)
-    spot_bids = deque(maxlen=MAX_LENGTH)
-    spot_asks = deque(maxlen=MAX_LENGTH)
-    perp_bids = deque(maxlen=MAX_LENGTH)
-    perp_asks = deque(maxlen=MAX_LENGTH)
-    spot_deltas = deque(maxlen=MAX_LENGTH)
-    perp_deltas = deque(maxlen=MAX_LENGTH)
-    perp_ask_volumes = deque(maxlen=MAX_LENGTH)
-    perp_bid_volumes = deque(maxlen=MAX_LENGTH)
-    spot_bid_volumes = deque(maxlen=MAX_LENGTH)
-    spot_ask_volumes = deque(maxlen=MAX_LENGTH)
-    position = deque(maxlen=MAX_LENGTH)
+    timestamps = deque(maxlen=MAX_VISIBLE_LENGTH)
+    spot_bids = deque(maxlen=MAX_VISIBLE_LENGTH)
+    spot_asks = deque(maxlen=MAX_VISIBLE_LENGTH)
+    perp_bids = deque(maxlen=MAX_VISIBLE_LENGTH)
+    perp_asks = deque(maxlen=MAX_VISIBLE_LENGTH)
+    spot_deltas = deque(maxlen=MAX_VISIBLE_LENGTH)
+    perp_deltas = deque(maxlen=MAX_VISIBLE_LENGTH)
+    perp_ask_volumes = deque(maxlen=MAX_VISIBLE_LENGTH)
+    perp_bid_volumes = deque(maxlen=MAX_VISIBLE_LENGTH)
+    spot_bid_volumes = deque(maxlen=MAX_VISIBLE_LENGTH)
+    spot_ask_volumes = deque(maxlen=MAX_VISIBLE_LENGTH)
+    position = deque(maxlen=MAX_VISIBLE_LENGTH)
 
     update_deque_lists()
 
