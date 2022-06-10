@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from dataclasses import dataclass
 from enum import Enum
 
 import pandas as pd
@@ -43,7 +44,7 @@ class BollingerBandStrategy(BaseStrategy):
         return f"Delta Product Bollinger Band Strategy"
 
     def strategy(self, perp_deltas: list, spot_deltas: list) -> Position:
-        self.delta_prod = pd.Series(perp_deltas) * pd.Series(spot_deltas)
+        self.delta_prod = pd.Series(perp_deltas) + pd.Series(spot_deltas)
 
         bbands = ta.bbands(self.delta_prod, length=self.bband_length, std=self.bband_std)
 
@@ -62,7 +63,7 @@ class BollingerBandStrategy(BaseStrategy):
             go.Scatter(
                 x=timestamps,
                 y=self.delta_prod,
-                name='Spot * Perp Delta',
+                name='Spot + Perp Delta',
                 mode='lines+markers',
                 marker=dict(symbol="circle")
             ),
@@ -92,3 +93,14 @@ class BollingerBandStrategy(BaseStrategy):
                 col=1
             )
         return fig
+
+
+@dataclass
+class Parameters:
+    """ Parameters to use when running visualizer """
+    SPOT_MARKET: str = "BTC/USD"
+    PERP_FUTURE: str = "BTC-PERP"
+    STRATEGY: BaseStrategy = BollingerBandStrategy(bband_length=20, bband_std=3)
+    MAX_VISIBLE_LENGTH: int = 1000
+    WINDOW_SIZE: (int, int) = (1400, 850)
+    TEMPLATE: str = "plotly_dark"

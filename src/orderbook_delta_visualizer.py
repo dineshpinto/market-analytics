@@ -11,7 +11,7 @@ from dash.dependencies import Output, Input
 from plotly.subplots import make_subplots
 
 from ftx_websocket_client import FtxWebsocketClient
-from orderbook_delta_strategies import Position, BollingerBandStrategy
+from orderbook_delta_strategies import Position, Parameters
 
 
 def get_bid_ask_and_delta(market: str) -> Tuple[float, float, float, float, float]:
@@ -182,7 +182,7 @@ def update_graph_scatter(_):
                           line_dash="dot", row="all", col=1)
 
     fig['layout'].update(
-        title_text=f"{SPOT_MARKET} and {PERP_FUTURE} bid-ask orderbook at depth=1",
+        title_text=f"{SPOT_MARKET} and {PERP_FUTURE} orderbook at depth=1",
         xaxis=dict(range=[min(timestamps), max(timestamps)]),
         width=WINDOW_SIZE[0],
         height=WINDOW_SIZE[1],
@@ -192,18 +192,13 @@ def update_graph_scatter(_):
 
 
 if __name__ == '__main__':
-    # Set up parameters
-    # Market params
-    SPOT_MARKET = "BTC/USD"
-    PERP_FUTURE = "BTC-PERP"
-
-    # Strategy params
-    STRATEGY = BollingerBandStrategy(bband_length=20, bband_std=3)
-
-    # Plotting params
-    MAX_VISIBLE_LENGTH = 1000
-    pio.templates.default = "plotly_dark"
-    WINDOW_SIZE = (1400, 850)
+    # Set up global params from Parameters dataclass
+    pio.templates.default = Parameters.TEMPLATE
+    SPOT_MARKET = Parameters.SPOT_MARKET
+    PERP_FUTURE = Parameters.PERP_FUTURE
+    STRATEGY = Parameters.STRATEGY
+    MAX_VISIBLE_LENGTH = Parameters.MAX_VISIBLE_LENGTH
+    WINDOW_SIZE = Parameters.WINDOW_SIZE
 
     # Initialize FTX websocket and deque lists
     ftx = FtxWebsocketClient()
