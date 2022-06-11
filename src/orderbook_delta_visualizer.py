@@ -184,8 +184,7 @@ def update_graph_scatter(_):
     fig['layout'].update(
         title_text=f"{SPOT_MARKET} and {PERP_FUTURE} orderbook at depth=1",
         xaxis=dict(range=[min(timestamps), max(timestamps)]),
-        width=WINDOW_SIZE[0],
-        height=WINDOW_SIZE[1],
+        autosize=True
     )
 
     return fig
@@ -198,7 +197,6 @@ if __name__ == '__main__':
     PERP_FUTURE = Parameters.PERP_FUTURE
     STRATEGY = Parameters.STRATEGY
     MAX_VISIBLE_LENGTH = Parameters.MAX_VISIBLE_LENGTH
-    WINDOW_SIZE = Parameters.WINDOW_SIZE
 
     # Initialize FTX websocket and deque lists
     ftx = FtxWebsocketClient()

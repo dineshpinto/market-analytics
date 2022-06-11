@@ -41,7 +41,7 @@ class BollingerBandStrategy(BaseStrategy):
         self.upper_bband = None
 
     def __repr__(self) -> str:
-        return f"Delta Product Bollinger Band Strategy"
+        return f"Delta Product Bollinger Band Strategy ({self.bband_length}, {self.bband_std})"
 
     def strategy(self, perp_deltas: list, spot_deltas: list) -> Position:
         self.delta_prod = pd.Series(perp_deltas) + pd.Series(spot_deltas)
@@ -102,5 +102,4 @@ class Parameters:
     PERP_FUTURE: str = "BTC-PERP"
     STRATEGY: BaseStrategy = BollingerBandStrategy(bband_length=20, bband_std=3)
     MAX_VISIBLE_LENGTH: int = 1000
-    WINDOW_SIZE: (int, int) = (1400, 850)
     TEMPLATE: str = "plotly_dark"
