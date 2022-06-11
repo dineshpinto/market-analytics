@@ -27,8 +27,10 @@ def get_bid_ask_and_delta(market: str) -> Tuple[float, float, float, float, floa
 def update_deque_lists():
     """ Query websocket and update deque lists """
     try:
-        spot_bid_price, spot_ask_price, spot_bid_volume, spot_ask_volume, spot_delta = get_bid_ask_and_delta(SPOT_MARKET)
-        perp_bid_price, perp_ask_price, perp_bid_volume, perp_ask_volume, perp_delta = get_bid_ask_and_delta(PERP_FUTURE)
+        spot_bid_price, spot_ask_price, spot_bid_volume, spot_ask_volume, spot_delta = get_bid_ask_and_delta(
+            SPOT_MARKET)
+        perp_bid_price, perp_ask_price, perp_bid_volume, perp_ask_volume, perp_delta = get_bid_ask_and_delta(
+            PERP_FUTURE)
     except IndexError:
         # Catch errors from websocket and handle them by skipping over the point
         pass
@@ -184,7 +186,9 @@ def update_graph_scatter(_):
     fig['layout'].update(
         title_text=f"{SPOT_MARKET} and {PERP_FUTURE} orderbook at depth=1",
         xaxis=dict(range=[min(timestamps), max(timestamps)]),
-        autosize=True
+        width=WINDOW_SIZE[0],
+        height=WINDOW_SIZE[1],
+        transition_duration=500,
     )
 
     return fig
@@ -197,6 +201,7 @@ if __name__ == '__main__':
     PERP_FUTURE = Parameters.PERP_FUTURE
     STRATEGY = Parameters.STRATEGY
     MAX_VISIBLE_LENGTH = Parameters.MAX_VISIBLE_LENGTH
+    WINDOW_SIZE = Parameters.WINDOW_SIZE
 
     # Initialize FTX websocket and deque lists
     ftx = FtxWebsocketClient()

@@ -95,7 +95,7 @@ class BollingerBandStrategy(BaseStrategy):
         return fig
 
 
-@dataclass
+@dataclass(frozen=True)
 class Parameters:
     """ Parameters to use when running visualizer """
     SPOT_MARKET: str = "BTC/USD"
@@ -103,3 +103,4 @@ class Parameters:
     STRATEGY: BaseStrategy = BollingerBandStrategy(bband_length=20, bband_std=3)
     MAX_VISIBLE_LENGTH: int = 1000
     TEMPLATE: str = "plotly_dark"
+    WINDOW_SIZE: (int, int) = (1400, 850)
