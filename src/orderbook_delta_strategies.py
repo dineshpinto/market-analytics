@@ -1,3 +1,4 @@
+import datetime
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from enum import Enum
@@ -29,6 +30,7 @@ class BaseStrategy(ABC):
 
     @abstractmethod
     def __repr__(self) -> str:
+        """ Method to return a string containing basic strategy info to be added to plot """
         raise NotImplementedError
 
 
@@ -98,9 +100,18 @@ class BollingerBandStrategy(BaseStrategy):
 @dataclass(frozen=True)
 class Parameters:
     """ Parameters to use when running visualizer """
+    # Name of spot market to track on FTX e.g. BTC/USD, ETH/USD
     SPOT_MARKET: str = "BTC/USD"
+    # Name of futures market to track on FTX e.g. BTC-PERP, ETH-PERP
     PERP_FUTURE: str = "BTC-PERP"
+    # Class of strategy to use
     STRATEGY: BaseStrategy = BollingerBandStrategy(bband_length=20, bband_std=3)
+    # Maximum number of data points visible on the screens
     MAX_VISIBLE_LENGTH: int = 1000
+    # Template for graph theme e.g. plotly_dark, plotly, seaborn
     TEMPLATE: str = "plotly_dark"
+    # Size of window in pixels
     WINDOW_SIZE: (int, int) = (1400, 850)
+    # Log live data to a csv file, use False to disable
+    LOGFILE: str | bool = f"{datetime.datetime.utcnow().strftime('%Y-%m-%d_%H-%M-%S')}_orderbook_delta_logger_" \
+                          f"{'_'.join(SPOT_MARKET.split('/'))}_{'_'.join(PERP_FUTURE.split('-'))}.csv "

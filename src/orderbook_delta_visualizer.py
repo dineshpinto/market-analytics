@@ -1,3 +1,4 @@
+import csv
 import datetime
 from collections import deque
 from typing import Tuple
@@ -31,12 +32,13 @@ def update_deque_lists():
             SPOT_MARKET)
         perp_bid_price, perp_ask_price, perp_bid_volume, perp_ask_volume, perp_delta = get_bid_ask_and_delta(
             PERP_FUTURE)
+        utc_timestamp = datetime.datetime.utcnow()
     except IndexError:
         # Catch errors from websocket and handle them by skipping over the point
         pass
     else:
         # If no error, append data into deque lists
-        timestamps.append(datetime.datetime.now())
+        utc_timestamps.append(utc_timestamp)
 
         spot_bids.append(spot_bid_price)
         spot_asks.append(spot_ask_price)
@@ -49,6 +51,12 @@ def update_deque_lists():
         perp_ask_volumes.append(perp_ask_volume)
         perp_bid_volumes.append(perp_bid_volume)
         perp_deltas.append(perp_delta)
+
+        if LOGFILE:
+            with open(LOGFILE, "a") as _file:
+                _writer = csv.writer(_file, delimiter=',')
+                _writer.writerow([utc_timestamp, spot_bid_price, spot_ask_price, spot_bid_volume, spot_ask_volume,
+                                  perp_bid_price, perp_ask_price, perp_bid_volume, perp_ask_volume])
 
 
 app = dash.Dash(__name__)
@@ -74,12 +82,12 @@ def update_graph_scatter(_):
                             f"{SPOT_MARKET} price", f"{SPOT_MARKET} volume", f"{PERP_FUTURE} price",
                             f"{PERP_FUTURE} volume", f" Delta volume (+ {STRATEGY})"))
 
-    fig = STRATEGY.plot_strategy(timestamps=list(timestamps), fig=fig)
+    fig = STRATEGY.plot_strategy(timestamps=list(utc_timestamps), fig=fig)
 
     # Spot bids and asks
     fig.add_trace(
         go.Scatter(
-            x=list(timestamps),
+            x=list(utc_timestamps),
             y=list(spot_bids),
             name='Spot Bids',
             mode='lines',
@@ -90,7 +98,7 @@ def update_graph_scatter(_):
     )
     fig.add_trace(
         go.Scatter(
-            x=list(timestamps),
+            x=list(utc_timestamps),
             y=list(spot_asks),
             name='Spot Asks',
             mode='lines',
@@ -103,7 +111,7 @@ def update_graph_scatter(_):
     # Spot Volumes
     fig.add_trace(
         go.Scatter(
-            x=list(timestamps),
+            x=list(utc_timestamps),
             y=list(spot_ask_volumes),
             name='Spot Ask Volume',
             mode='lines',
@@ -114,7 +122,7 @@ def update_graph_scatter(_):
     )
     fig.add_trace(
         go.Scatter(
-            x=list(timestamps),
+            x=list(utc_timestamps),
             y=list(spot_bid_volumes),
             name='Spot Bid Volume',
             mode='lines',
@@ -127,7 +135,7 @@ def update_graph_scatter(_):
     # Perp bids and asks
     fig.add_trace(
         go.Scatter(
-            x=list(timestamps),
+            x=list(utc_timestamps),
             y=list(perp_bids),
             name='Perp Bids',
             mode='lines',
@@ -138,7 +146,7 @@ def update_graph_scatter(_):
     )
     fig.add_trace(
         go.Scatter(
-            x=list(timestamps),
+            x=list(utc_timestamps),
             y=list(perp_asks),
             name='Perp Asks',
             mode='lines',
@@ -151,7 +159,7 @@ def update_graph_scatter(_):
     # Volumes
     fig.add_trace(
         go.Scatter(
-            x=list(timestamps),
+            x=list(utc_timestamps),
             y=list(perp_ask_volumes),
             name='Perp Ask Volume',
             mode='lines',
@@ -162,7 +170,7 @@ def update_graph_scatter(_):
     )
     fig.add_trace(
         go.Scatter(
-            x=list(timestamps),
+            x=list(utc_timestamps),
             y=list(perp_bid_volumes),
             name='Perp Bid Volume',
             mode='lines',
@@ -176,16 +184,16 @@ def update_graph_scatter(_):
     for idx, pos in enumerate(position):
         if pos == Position.LONG and __current_pos != Position.LONG:
             __current_pos = Position.LONG
-            fig.add_vline(timestamps[idx + 1], line_color=px.colors.qualitative.Plotly[2],
+            fig.add_vline(utc_timestamps[idx + 1], line_color=px.colors.qualitative.Plotly[2],
                           line_dash="dot", row="all", col=1)
         elif pos == Position.SHORT and __current_pos != Position.SHORT:
             __current_pos = Position.SHORT
-            fig.add_vline(timestamps[idx + 1], line_color=px.colors.qualitative.Plotly[6],
+            fig.add_vline(utc_timestamps[idx + 1], line_color=px.colors.qualitative.Plotly[6],
                           line_dash="dot", row="all", col=1)
 
     fig['layout'].update(
         title_text=f"{SPOT_MARKET} and {PERP_FUTURE} orderbook at depth=1",
-        xaxis=dict(range=[min(timestamps), max(timestamps)]),
+        xaxis=dict(range=[min(utc_timestamps), max(utc_timestamps)]),
         width=WINDOW_SIZE[0],
         height=WINDOW_SIZE[1],
         transition_duration=500,
@@ -202,11 +210,18 @@ if __name__ == '__main__':
     STRATEGY = Parameters.STRATEGY
     MAX_VISIBLE_LENGTH = Parameters.MAX_VISIBLE_LENGTH
     WINDOW_SIZE = Parameters.WINDOW_SIZE
+    LOGFILE = Parameters.LOGFILE
+
+    if LOGFILE:
+        with open(LOGFILE, "w") as file:
+            writer = csv.writer(file, delimiter=',')
+            writer.writerow(["utc_timestamp", "spot_bid_price", "spot_ask_price", "spot_bid_volume", "spot_ask_volume",
+                             "perp_bid_price", "perp_ask_price", "perp_bid_volume", "perp_ask_volume"])
 
     # Initialize FTX websocket and deque lists
     ftx = FtxWebsocketClient()
 
-    timestamps = deque(maxlen=MAX_VISIBLE_LENGTH)
+    utc_timestamps = deque(maxlen=MAX_VISIBLE_LENGTH)
     spot_bids = deque(maxlen=MAX_VISIBLE_LENGTH)
     spot_asks = deque(maxlen=MAX_VISIBLE_LENGTH)
     perp_bids = deque(maxlen=MAX_VISIBLE_LENGTH)
