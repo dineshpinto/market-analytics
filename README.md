@@ -21,7 +21,7 @@ Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be d
 ### Live orderbook visualizer
 Built with Dash and Plotly, you can also visualize the orderbook delta live:
 
-[orderbook_delta_visualizer](https://user-images.githubusercontent.com/15251343/173098770-fd82b40d-2bad-4340-97ce-d1b39e36b6f4.mov)
+[orderbook_delta_visualizer](https://user-images.githubusercontent.com/15251343/173228676-470de060-7ab9-4742-b69f-7b04068ec6fe.mov)
 
 #### To run the visualizer
 ```shell
@@ -29,10 +29,10 @@ python src/orderbook_delta_visualizer.py
 ```
 
 #### To adjust the visualizer parameters or strategy
-+ All strategies and parameters are stored in `orderbook_delta_strategies.py`
-+ Modify the strategy by implementing a new class inheriting from the `BaseStrategy` abstract base class 
-+ Point to the new strategy by modifying the parameters stored in the dataclass `Parameters`
-+ You can modify parameters when `orderbook_delta_visualizer.py` is running, it will restart automatically
++ All strategies and parameters are stored in `src/orderbook_delta_strategies.py`
++ Modify the strategy by implementing a new class inheriting from the `orderbook_delta_strategies/BaseStrategy` abstract base class 
++ Point to the new strategy by modifying the parameters stored in the dataclass `orderbook_delta_strategies/Parameters`
++ You can modify parameters when `src/orderbook_delta_visualizer.py` is running, it will restart automatically
 
 ### Limitations
 + This model is not based on a detailed analysis of market microstructure and order-book dynamics, it is simply an obervation based on very limited experimentation
