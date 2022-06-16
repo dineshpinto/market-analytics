@@ -29,10 +29,10 @@ python src/orderbook_delta_visualizer.py
 ```
 
 #### To adjust the visualizer parameters or strategy
-+ All strategies and parameters are stored in `orderbook_delta_strategies.py`
-+ Modify the strategy by implementing a new class inheriting from the `BaseStrategy` abstract base class 
-+ Point to the new strategy by modifying the parameters stored in the dataclass `Parameters`
-+ You can modify parameters when `orderbook_delta_visualizer.py` is running, it will restart automatically
++ All strategies and parameters are stored in `src/orderbook_delta_strategies.py`
++ Modify the strategy by implementing a new class inheriting from the `orderbook_delta_strategies/BaseStrategy` abstract base class 
++ Point to the new strategy by modifying the parameters stored in the dataclass `orderbook_delta_strategies/Parameters`
++ You can modify parameters when `src/orderbook_delta_visualizer.py` is running, it will restart automatically
 
 ### Limitations
 + This model is not based on a detailed analysis of market microstructure and order-book dynamics, it is simply an obervation based on very limited experimentation
