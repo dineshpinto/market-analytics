@@ -101,17 +101,17 @@ class BollingerBandStrategy(BaseStrategy):
 class Parameters:
     """ Parameters to use when running visualizer """
     # Name of spot market to track on FTX e.g. BTC/USD, ETH/USD
-    SPOT_MARKET: str = "BTC/USD"
+    spot_market: str = "BTC/USD"
     # Name of futures market to track on FTX e.g. BTC-PERP, ETH-PERP
-    PERP_FUTURE: str = "BTC-PERP"
+    perp_future: str = "BTC-PERP"
     # Class of strategy to use
-    STRATEGY: BaseStrategy = BollingerBandStrategy(bband_length=20, bband_std=3)
+    strategy: BaseStrategy = BollingerBandStrategy(bband_length=20, bband_std=3)
     # Maximum number of data points visible on the screens
-    MAX_VISIBLE_LENGTH: int = 1000
+    max_visible_length: int = 1000
     # Template for graph theme e.g. plotly_dark, plotly, seaborn
-    TEMPLATE: str = "plotly_dark"
+    template: str = "plotly_dark"
     # Size of window in pixels
-    WINDOW_SIZE: (int, int) = (1400, 850)
+    window_size: (int, int) = (1400, 850)
     # Log live data to a csv file, use False to disable
-    LOGFILE: str | bool = f"{datetime.datetime.utcnow().strftime('%Y-%m-%d_%H-%M-%S')}_orderbook_delta_logger_" \
-                          f"{'_'.join(SPOT_MARKET.split('/'))}_{'_'.join(PERP_FUTURE.split('-'))}.csv "
+    logfile: str | bool = f"{datetime.datetime.utcnow().strftime('%Y-%m-%d_%H-%M-%S')}_orderbook_delta_logger_" \
+                          f"{'_'.join(spot_market.split('/'))}_{'_'.join(perp_future.split('-'))}.csv "

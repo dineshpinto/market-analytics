@@ -9,10 +9,11 @@ import plotly.graph_objects as go
 import plotly.io as pio
 from dash import dcc, html
 from dash.dependencies import Output, Input
+from ftx import FtxClient
 from plotly.subplots import make_subplots
 
 from ftx_websocket_client import FtxWebsocketClient
-from orderbook_delta_strategies import Position, Parameters
+from orderbook_delta_strategies import Position, Parameters, BaseStrategy
 
 
 def get_bid_ask_and_delta(market: str) -> Tuple[float, float, float, float, float]:
@@ -203,14 +204,31 @@ def update_graph_scatter(_):
 
 
 if __name__ == '__main__':
+    ftx_rest = FtxClient()
+    ftx_markets = [market["name"] for market in ftx_rest.get_markets()]
+    del ftx_rest
+
+    # Basic input sanity check
+    assert Parameters.template in pio.templates, f"Invalid plotly template {Parameters.template}, Valid {pio.templates}"
+    assert Parameters.spot_market in ftx_markets, f"Invalid spot market {Parameters.spot_market}, Valid {ftx_markets}"
+    assert Parameters.perp_future in ftx_markets, f"Invalid perp future {Parameters.perp_future}, Valid {ftx_markets}"
+    assert 1 < Parameters.max_visible_length < 5000, \
+        f"Invalid visible length {Parameters.max_visible_length}, visible length should be between 1 and 5000"
+    assert Parameters.window_size[0] > 0 and Parameters.window_size[1] > 0, \
+        f"Invalid window size {Parameters.window_size}"
+    assert isinstance(Parameters.strategy, BaseStrategy), \
+        f"Strategy {Parameters.strategy} must be a subclass of BaseStrategy"
+    assert isinstance(Parameters.logfile, bool) or isinstance(Parameters.logfile, str), \
+        f"Invalid logfile {Parameters.logfile}"
+
     # Set up global params from Parameters dataclass
-    pio.templates.default = Parameters.TEMPLATE
-    SPOT_MARKET = Parameters.SPOT_MARKET
-    PERP_FUTURE = Parameters.PERP_FUTURE
-    STRATEGY = Parameters.STRATEGY
-    MAX_VISIBLE_LENGTH = Parameters.MAX_VISIBLE_LENGTH
-    WINDOW_SIZE = Parameters.WINDOW_SIZE
-    LOGFILE = Parameters.LOGFILE
+    pio.templates.default = Parameters.template
+    SPOT_MARKET = Parameters.spot_market
+    PERP_FUTURE = Parameters.perp_future
+    STRATEGY = Parameters.strategy
+    MAX_VISIBLE_LENGTH = Parameters.max_visible_length
+    WINDOW_SIZE = Parameters.window_size
+    LOGFILE = Parameters.logfile
 
     if LOGFILE:
         with open(LOGFILE, "w") as file:
