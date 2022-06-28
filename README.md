@@ -1,6 +1,6 @@
 # Market Analytics
 
-Mathematical analysis of orderbook data, bitcoin market cycles and crypto project valuations.
+A set of Jupyter Notebooks and Python tools to quantitatively (and sometimes qualitatively) analyze the cryto markets.
 
 ## Orderbook Delta
 A trading bot for this strategy is written in Rust [here](https://github.com/dineshpinto/orderbook-delta-bot).
