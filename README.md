@@ -10,13 +10,7 @@ The idea behind this is the concept of _mean reversion_. We look for large devia
 on FTX at depth=1. These deviations could be caused by over-enthusiastic and over-leveraged market participants (
 speculation, are reasons important?).
 
-We counter-trade those deviations, and enter short/long positions based on triggers given by a large delta (> 2 SDs)
-from a (10-20) period rolling bollinger band.
-
 The full analysis is in [notebooks/OrderbookDeltaAnalyzer.ipynb](notebooks/OrderbookDeltaAnalyzer.ipynb)
-
-Interactive image [here](images/orderbook_delta_analyzer.html) (may need to be downloaded as GitHub limits hosted file
-size)
 
 ![orderbook_delta_analyzer.png](images/orderbook_delta_analyzer.png)
 
@@ -43,8 +37,8 @@ python src/orderbook_delta_visualizer.py
 ### Limitations
 
 + This model is not based on a detailed analysis of market microstructure and order-book dynamics, it is simply an
-  obervation based on very limited experimentation
-+ To understand market microstucture and order-book dynamics, an ab-intio theoretical analysis is required. Quant arXiv
+  observation based on very limited experimentation
++ To understand market microstucture and order-book dynamics, an ab-initio theoretical analysis is required. Quant arXiv
   has some nice papers on this:
     + [Trade arrival dynamics and quote imbalance in a limit order book](https://arxiv.org/pdf/1312.0514.pdf)
     + [Continuous-time Modeling of Bid-Ask Spread and Price Dynamics in Limit Order Books](https://arxiv.org/pdf/1310.1103.pdf)
@@ -117,9 +111,10 @@ The full analysis is in [notebooks/CFMM.ipynb](notebooks/CFMM.ipynb)
 
 Understanding market cycles using basic mathematics is a fun (and likely incorrect!) exercise. Here we use simple
 geometric progressions on the length of Bitcoin bull and bear
-cycles to estimate the length of future cycles. This simple model is able to accurately predict a 26 month bull cycle
+cycles to estimate the length of future cycles. This simple model is able to (accurately lol) predict a 26-month bull
+cycle
 peaking in April 2021, followed
-by a 3 month bear cycle. It further predicts 10 month bull cycle ending in **July 2022**, after which the model starts
+by a 3-month bear cycle. It further predicts 10-month bull cycle ending in **July 2022**, after which the model starts
 predicting a bear cycle length tending to 0.
 
 The full analysis is in [notebooks/BitcoinGeometricProgression.ipynb](notebooks/BitcoinGeometricProgression.ipynb)
@@ -134,31 +129,31 @@ The full analysis is in [notebooks/ProjectValuation.ipynb](notebooks/ProjectValu
 
 ## Installation
 
-1. Create the conda environment from file (for Mac M1)
+### Create the conda environment from file (for Mac M1)
 
 ```shell
 conda env create --file conda-env.yml
 ```
 
-3. Activate environment
+### Activate environment
 
 ```shell
 conda activate market_analytics
 ```
 
-4. Add environment to Jupyter kernel
+### Add environment to Jupyter kernel
 
 ```shell
 python -m ipykernel install --name=market_analytics
 ```
 
-5. Install jupyter lab extensions for plotly
+### Install jupyter lab extensions for plotly
 
 ```shell
 jupyter labextension install jupyterlab-plotly
 ```
 
-6. Explore the various Jupyterlab Notebooks under `notebooks/`
+### Explore the various Jupyterlab Notebooks under `notebooks/`
 
 ```shell
 jupyter lab
