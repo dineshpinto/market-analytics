@@ -76,3 +76,5 @@ fabric.properties
 
 .idea/
 .ipynb_checkpoints
+
+.env
