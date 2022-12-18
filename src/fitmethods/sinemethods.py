@@ -859,7 +859,7 @@ def make_sineexponentialdecay_fit(self, x_axis, data, estimator, units=None, add
     period = 1/result.params['frequency'].value
     try:
         period_err = result.params['frequency'].stderr / (result.params['frequency'])**2
-    except ZeroDivisionError:
+    except ZeroDivisionError or TypeError:
         period_err = np.inf
 
     result_str_dict['Period'] = {'value': period if period else 0.0,
@@ -1836,19 +1836,19 @@ def make_sinetriplewithexpdecay_fit(self, x_axis, data, estimator, units=None, a
     period1 = 1 / result.params['s1_frequency'].value
     try:
         period1_err = result.params['s1_frequency'].stderr / (result.params['s1_frequency']) ** 2
-    except ZeroDivisionError:
+    except ZeroDivisionError or TypeError:
         period1_err = np.inf
 
     period2 = 1 / result.params['s2_frequency'].value
     try:
         period2_err = result.params['s2_frequency'].stderr / (result.params['s2_frequency']) ** 2
-    except ZeroDivisionError:
+    except ZeroDivisionError or TypeError:
         period2_err = np.inf
 
     period3 = 1 / result.params['s3_frequency'].value
     try:
         period3_err = result.params['s3_frequency'].stderr / (result.params['s3_frequency']) ** 2
-    except ZeroDivisionError:
+    except ZeroDivisionError or TypeError:
         period3_err = np.inf
 
     result_str_dict['Period 1'] = {'value': period1 if period1 else 0.0,
