@@ -4,40 +4,24 @@ A set of Jupyter Notebooks and Python tools to quantitatively analyze the crypto
 
 ## Installation
 
-### Create the conda environment from file (for Mac M1)
+Uses the [Poetry](https://python-poetry.org) package manager.
 
-```shell
-conda env create --file conda-env.yml
+### Install dependencies
+
+```bash
+poetry install
 ```
 
-### Activate environment
+### Add Jupyter kernelspec
 
-```shell
-conda activate market_analytics
+```bash
+poetry run python -m ipykernel install --user --name=market_analytics
 ```
 
-### Add environment to Jupyter kernel
+### Explore `notebooks/`
 
 ```shell
-python -m ipykernel install --name=market_analytics
-```
-
-### Install jupyter lab extensions for plotly
-
-```shell
-jupyter labextension install jupyterlab-plotly
-```
-
-### Explore the various Jupyterlab Notebooks under `notebooks/`
-
-```shell
-jupyter lab
-```
-
-### Export conda environment
-
-```shell
-conda env export --no-builds | grep -v "^prefix: " > conda-env.yml
+poetry run jupyter lab
 ```
 
 ## Disclaimer
