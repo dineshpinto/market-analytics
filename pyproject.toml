@@ -21,6 +21,8 @@ seaborn = "^0.12.1"
 web3 = "^5.31.3"
 lmfit = "^1.1.0"
 ccxt = "^2.4.43"
+yfinance = "^0.2.3"
+defillama2 = "^0.7.2"
 
 
 [build-system]
