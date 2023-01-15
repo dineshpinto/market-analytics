@@ -504,14 +504,14 @@ dev = ["Sphinx (==4.3.2)", "black (==22.3.0)", "build (==0.8.0)", "flake8 (==4.0
 
 [[package]]
 name = "ccxt"
-version = "2.6.12"
+version = "2.6.23"
 description = "A JavaScript / Python / PHP cryptocurrency trading library with support for 130+ exchanges"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "ccxt-2.6.12-py2.py3-none-any.whl", hash = "sha256:e4a07cfc1c32f749af06405930aea407c4059977c513eddff4f5a1404f3a0698"},
-    {file = "ccxt-2.6.12.tar.gz", hash = "sha256:bd1e50369610a81cd7aab408c398ef34b79056d95462c2d101450aa8fcffbb95"},
+    {file = "ccxt-2.6.23-py2.py3-none-any.whl", hash = "sha256:6b172dec8d50fb677f57eec6f5a74e7bb421c08d4651799a2f49c7eeb1db6d10"},
+    {file = "ccxt-2.6.23.tar.gz", hash = "sha256:cdd1c041cbb656509deb162d1e775973662406c4febf9f135ee11746f4d6bf91"},
 ]
 
 [package.dependencies]
@@ -3139,6 +3139,21 @@ files = [
 six = ">=1.5"
 
 [[package]]
+name = "python-dotenv"
+version = "0.21.0"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "python-dotenv-0.21.0.tar.gz", hash = "sha256:b77d08274639e3d34145dfa6c7008e66df0f04b7be7a75fd0d5292c191d79045"},
+    {file = "python_dotenv-0.21.0-py3-none-any.whl", hash = "sha256:1684eb44636dd462b66c3ee016599815514527ad99965de77f43e0944634a7e5"},
+]
+
+[package.extras]
+cli = ["click (>=5.0)"]
+
+[[package]]
 name = "python-json-logger"
 version = "2.0.4"
 description = "A python library adding a json log formatter"
@@ -3152,14 +3167,14 @@ files = [
 
 [[package]]
 name = "pytz"
-version = "2022.7"
+version = "2022.7.1"
 description = "World timezone definitions, modern and historical"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "pytz-2022.7-py2.py3-none-any.whl", hash = "sha256:93007def75ae22f7cd991c84e02d434876818661f8df9ad5df9e950ff4e52cfd"},
-    {file = "pytz-2022.7.tar.gz", hash = "sha256:7ccfae7b4b2c067464a6733c6261673fdb8fd1be905460396b97a073e9fa683a"},
+    {file = "pytz-2022.7.1-py2.py3-none-any.whl", hash = "sha256:78f4f37d8198e0627c5f1143240bb0206b8691d8d7ac6d78fee88b78733f8c4a"},
+    {file = "pytz-2022.7.1.tar.gz", hash = "sha256:01a0681c4b9684a28304615eba55d1ab31ae00bf68ec157ec3708a8182dbbcd0"},
 ]
 
 [[package]]
@@ -3836,14 +3851,13 @@ files = [
 
 [[package]]
 name = "wcwidth"
-version = "0.2.5"
+version = "0.2.6"
 description = "Measures the displayed width of unicode strings in a terminal"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
-    {file = "wcwidth-0.2.5.tar.gz", hash = "sha256:c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"},
+    {file = "wcwidth-0.2.6.tar.gz", hash = "sha256:a5220780a404dbe3353789870978e472cfe477761f06ee55077256e509b156d0"},
 ]
 
 [[package]]
@@ -4055,14 +4069,14 @@ multidict = ">=4.0"
 
 [[package]]
 name = "yfinance"
-version = "0.2.3"
+version = "0.2.4"
 description = "Download market data from Yahoo! Finance API"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "yfinance-0.2.3-py2.py3-none-any.whl", hash = "sha256:db5c2c2b7a0c9afe7d62d31e917022cf4370b485b6c1729d6035fdbbfbe92e73"},
-    {file = "yfinance-0.2.3.tar.gz", hash = "sha256:9ee57b9d92e4611d820393467a0ab4e764b35a33192054ea6c2d8a49dc494592"},
+    {file = "yfinance-0.2.4-py2.py3-none-any.whl", hash = "sha256:8f7be9d0858668dcba8a8e45778da2c852e61c574ca979419e252401e7164167"},
+    {file = "yfinance-0.2.4.tar.gz", hash = "sha256:7bb0cbcf874116c4febf1a2d930b0d0fe5ac2af91673beb2425cef8d7f20916a"},
 ]
 
 [package.dependencies]
@@ -4081,4 +4095,4 @@ requests = ">=2.26"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "620e3fb7951e9ac8cf40ab2a27e0e0473d829718bbee32c4efb374543c2c128d"
+content-hash = "e492999749d2c2380ea5428f8111790655a45b4bb33629a5a32a0a2b134fcc19"
