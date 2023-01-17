@@ -504,14 +504,14 @@ dev = ["Sphinx (==4.3.2)", "black (==22.3.0)", "build (==0.8.0)", "flake8 (==4.0
 
 [[package]]
 name = "ccxt"
-version = "2.6.23"
+version = "2.6.31"
 description = "A JavaScript / Python / PHP cryptocurrency trading library with support for 130+ exchanges"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "ccxt-2.6.23-py2.py3-none-any.whl", hash = "sha256:6b172dec8d50fb677f57eec6f5a74e7bb421c08d4651799a2f49c7eeb1db6d10"},
-    {file = "ccxt-2.6.23.tar.gz", hash = "sha256:cdd1c041cbb656509deb162d1e775973662406c4febf9f135ee11746f4d6bf91"},
+    {file = "ccxt-2.6.31-py2.py3-none-any.whl", hash = "sha256:d6ac289bd9cadc0a53aa47629d8d2e5ef54f633e04c56f2e28297ddcede8fd78"},
+    {file = "ccxt-2.6.31.tar.gz", hash = "sha256:4331ff0ad5a22e86e2d0e75fc9b6f51b472f9e28aadfee1dfdebbb7f6b71540d"},
 ]
 
 [package.dependencies]
@@ -630,6 +630,22 @@ files = [
 
 [package.extras]
 unicode-backport = ["unicodedata2"]
+
+[[package]]
+name = "coinglass-api"
+version = "0.2.0"
+description = "Unofficial Python client for Coinglass API"
+category = "main"
+optional = false
+python-versions = ">=3.10,<4.0"
+files = [
+    {file = "coinglass_api-0.2.0-py3-none-any.whl", hash = "sha256:cb6feb50353d40e16099b22d7346cd6b17ab3ce8080050177be164d6a9add28c"},
+    {file = "coinglass_api-0.2.0.tar.gz", hash = "sha256:f53e02a1788fc611b2790e4b13b22b29578f42a66ee792b73207270a5b9f308d"},
+]
+
+[package.dependencies]
+pandas = ">=1.5.2,<2.0.0"
+requests = ">=2.28.2,<3.0.0"
 
 [[package]]
 name = "colorama"
@@ -948,14 +964,14 @@ files = [
 
 [[package]]
 name = "defillama2"
-version = "0.7.2"
+version = "0.7.3"
 description = "Python client for DefiLlama API"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "defillama2-0.7.2-py3-none-any.whl", hash = "sha256:e401803b211a6c9f6bf3051a07c6be9f62bfdf9120c992032cf5db07f1edcbe8"},
-    {file = "defillama2-0.7.2.tar.gz", hash = "sha256:d03ce3adece64f4d6f10de0c9d3f61e803e6f236804a31647dc7797cd7e66387"},
+    {file = "defillama2-0.7.3-py3-none-any.whl", hash = "sha256:e0f4da469a765364641293b94f72e53044eb1c1939eb704a99a90b5196e94b6b"},
+    {file = "defillama2-0.7.3.tar.gz", hash = "sha256:6266cbfa79002431365fbd7a09ae1a0751419d0039fecd2f8d547188a1c3af0d"},
 ]
 
 [package.dependencies]
@@ -1428,14 +1444,14 @@ requests = ">=2.11"
 
 [[package]]
 name = "ipykernel"
-version = "6.20.1"
+version = "6.20.2"
 description = "IPython Kernel for Jupyter"
 category = "main"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "ipykernel-6.20.1-py3-none-any.whl", hash = "sha256:a314e6782a4f9e277783382976b3a93608a3787cd70a235b558b47f875134be1"},
-    {file = "ipykernel-6.20.1.tar.gz", hash = "sha256:f6016ecbf581d0ea6e29ba16cee6cc1a9bbde3835900c46c6571a791692f4139"},
+    {file = "ipykernel-6.20.2-py3-none-any.whl", hash = "sha256:5d0675d5f48bf6a95fd517d7b70bcb3b2c5631b2069949b5c2d6e1d7477fb5a0"},
+    {file = "ipykernel-6.20.2.tar.gz", hash = "sha256:1893c5b847033cd7a58f6843b04a9349ffb1031bc6588401cadc9adb58da428e"},
 ]
 
 [package.dependencies]
@@ -1798,14 +1814,14 @@ files = [
 
 [[package]]
 name = "jupyterlab-server"
-version = "2.18.0"
+version = "2.19.0"
 description = "A set of server components for JupyterLab and JupyterLab like applications."
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "jupyterlab_server-2.18.0-py3-none-any.whl", hash = "sha256:2ce377afe6c5f762e933de1d942cad1ec07a1fbace4b586cd7a905fd57892695"},
-    {file = "jupyterlab_server-2.18.0.tar.gz", hash = "sha256:7830f085debc9417a72ebf482dc5cb477d6bf76884826c73182fa457c7829df4"},
+    {file = "jupyterlab_server-2.19.0-py3-none-any.whl", hash = "sha256:51f6922e34f9f3db875051f4f7b57539a04ddd030f42d9ce6062dedf67bf7f2f"},
+    {file = "jupyterlab_server-2.19.0.tar.gz", hash = "sha256:9aec21a2183bbedd9f91a86628355449575f1862d88b28ad5f905019d31e6c21"},
 ]
 
 [package.dependencies]
@@ -2392,14 +2408,14 @@ test = ["ipykernel", "ipython", "ipywidgets", "nbconvert (>=7.0.0)", "pytest (>=
 
 [[package]]
 name = "nbconvert"
-version = "7.2.7"
+version = "7.2.8"
 description = "Converting Jupyter Notebooks"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "nbconvert-7.2.7-py3-none-any.whl", hash = "sha256:e057f1f87a6ac50629b724d9a46b40e2ba394d6f20ee7f33f4acef1928a15af3"},
-    {file = "nbconvert-7.2.7.tar.gz", hash = "sha256:8b727b0503bf4e0ff3907c8bea030d3fc4015fbee8669ac6ac2a5a6668b49d5e"},
+    {file = "nbconvert-7.2.8-py3-none-any.whl", hash = "sha256:ac57f2812175441a883f50c8ff113133ca65fe7ae5a9f1e3da3bfd1a70dce2ee"},
+    {file = "nbconvert-7.2.8.tar.gz", hash = "sha256:ccedacde57a972836bfb46466485be29ed1364ed7c2f379f62bad47d340ece99"},
 ]
 
 [package.dependencies]
@@ -2421,7 +2437,7 @@ traitlets = ">=5.0"
 
 [package.extras]
 all = ["nbconvert[docs,qtpdf,serve,test,webpdf]"]
-docs = ["ipykernel", "ipython", "myst-parser", "nbsphinx (>=0.2.12)", "pydata-sphinx-theme", "sphinx (==5.0.2)"]
+docs = ["ipykernel", "ipython", "myst-parser", "nbsphinx (>=0.2.12)", "pydata-sphinx-theme", "sphinx (==5.0.2)", "sphinxcontrib-spelling"]
 qtpdf = ["nbconvert[qtpng]"]
 qtpng = ["pyqtwebengine (>=5.15)"]
 serve = ["tornado (>=6.1)"]
@@ -3551,14 +3567,14 @@ win32 = ["pywin32"]
 
 [[package]]
 name = "setuptools"
-version = "65.7.0"
+version = "66.0.0"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "setuptools-65.7.0-py3-none-any.whl", hash = "sha256:8ab4f1dbf2b4a65f7eec5ad0c620e84c34111a68d3349833494b9088212214dd"},
-    {file = "setuptools-65.7.0.tar.gz", hash = "sha256:4d3c92fac8f1118bb77a22181355e29c239cabfe2b9effdaa665c66b711136d7"},
+    {file = "setuptools-66.0.0-py3-none-any.whl", hash = "sha256:a78d01d1e2c175c474884671dde039962c9d74c7223db7369771fcf6e29ceeab"},
+    {file = "setuptools-66.0.0.tar.gz", hash = "sha256:bd6eb2d6722568de6d14b87c44a96fac54b2a45ff5e940e639979a3d1792adb6"},
 ]
 
 [package.extras]
@@ -4095,4 +4111,4 @@ requests = ">=2.26"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "e492999749d2c2380ea5428f8111790655a45b4bb33629a5a32a0a2b134fcc19"
+content-hash = "ca2437816c43e8015c42d0af58110b8fe413d335f9650e4d2c614043fe2dbbaa"
