@@ -29,6 +29,7 @@ python-binance = "^1.0.16"
 ipykernel = "^6.22.0"
 ruff = "^0.1.9"
 ruff-lsp = "^0.0.48"
+notebook = "^7.0.6"
 
 
 [build-system]
