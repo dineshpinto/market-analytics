@@ -15,7 +15,7 @@ poetry install
 ### Add Jupyter kernelspec
 
 ```bash
-poetry run python -m ipykernel install --user --name=market_analytics
+poetry run python -m ipykernel install --user --name=market-analytics
 ```
 
 ### Explore `notebooks/`
