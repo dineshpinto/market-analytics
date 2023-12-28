@@ -1,8 +1,9 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 
-def calculate_annualized_volatility(df: pd.DataFrame, window: int, num_windows_in_year: int) -> pd.DataFrame:
+def calculate_annualized_volatility(df: pd.DataFrame, window: int,
+                                    num_windows_in_year: int) -> pd.DataFrame:
     """ Calculate volatility for a given dataframe and window size """
     annualization_factor = window / num_windows_in_year
 
